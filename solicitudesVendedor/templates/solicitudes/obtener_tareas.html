@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Tareas Asignadas</title>
+    <link rel="stylesheet" href="{% static 'css/obtareas.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+    <div class="container-fluid">
+        <div class="content-header">
+            <h2 class="page-title">Lista de Tareas Asignadas</h2>
+        </div>
+
+        <div class="content-body">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID Pedido</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Fecha del Pedido</th>
+                        <th>Repartidor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tarea in tareas %}
+                    <tr>
+                        <td>{{ tarea.pedido.id }}</td>
+                        <td>{{ tarea.pedido.cliente.nombre }}</td>
+                        <td>{{ tarea.get_estado_display }}</td>
+                        <!-- Formateando la fecha para mostrarla en formato 'dd/mm/yyyy' -->
+                        <td>{{ tarea.pedido.fecha_pedido|date:"d/m/Y" }}</td>
+                        <td>{{ tarea.repartidor.nombre|default:"No asignado" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

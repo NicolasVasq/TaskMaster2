@@ -1,0 +1,84 @@
+/* Contenedor principal para el área de contenido */
+.content-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Subtítulo para la sección de la tarea */
+.sub-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #5a6268;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el formulario */
+.form-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Estilo del botón de asignar tarea */
+.form-actions .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-lg {
+    font-size: 18px;
+    padding: 12px 25px;
+}
+
+/* Estilo responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 22px;
+    }
+
+    .sub-title {
+        font-size: 20px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-actions .btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Producto</title>
+</head>
+<body>
+    <h2 style="text-align: center;"> Detalles del Producto </h2>
+    <div style="display: flex;  "  class="container">
+
+        <div class="row">
+            {% for producto in productos %}
+            
+                <div class="col-8 col-md-4">
+                    <div class="card text-center">
+                        {% if producto.imagen %}
+                            <img src="{{ producto.imagen.url }}" class="card-img-top mx-auto">
+                        {% else %}
+                            <img src="{% static 'img/sinfoto.webp' %}" class="card-img-top mx-auto">
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">Producto ID: {{ producto.productoId }}</h4>
+                            <p class="card-text">
+                                Marca: {{ producto.nombreMarca.nombreMarca }}<br>
+                                Producto: {{ producto.nombre }}<br>
+                                Precio: ${{ producto.precio }}<br>
+                                Stock: {{ producto.stock }}<br>
+                            </p>
+                            <a href="{% url 'lista_productos' %}" class="btn btn-success">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

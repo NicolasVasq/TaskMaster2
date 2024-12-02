@@ -1,0 +1,132 @@
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="icon" href="static/img/taskmasterico.ico">
+    <style>
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+            color: #4c4cff;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4c4cff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #3a3ab5;
+        }
+        .password-container {
+            position: relative;
+            margin-top: 15px;
+        }
+        .password-container input {
+            padding-right: 40px;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .toggle-password img {
+            width: 20px;
+            height: 20px;
+        }
+        .links {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .links a {
+            color: #4c4cff;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form method="post" class="loginForm">
+            {% csrf_token %}
+            <h2>Iniciar Sesión</h2>
+            <div class="form-group">
+                <label for="id_username">Nombre de usuario</label>
+                <input type="text" name="username" id="id_username" class="form-control" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="form-group password-container">
+                <label for="id_password">Contraseña</label>
+                <input type="password" name="password" id="id_password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                <span class="toggle-password" onclick="togglePassword()">
+                    <img src="{% static 'img/ojopassword.png' %}" alt="Mostrar Contraseña">
+                </span>
+            </div>
+            <button type="submit" class="btn">Iniciar sesión</button>
+        </form>
+        <div class="links">
+            <a href="{% url 'register' %}">¿No tienes cuenta? Regístrate</a>
+            <br>
+            <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("id_password");
+            const passwordFieldType = passwordField.getAttribute("type");
+            passwordField.setAttribute("type", passwordFieldType === "password" ? "text" : "password");
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

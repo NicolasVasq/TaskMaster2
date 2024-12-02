@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Productos</title>
+    <link rel="stylesheet" href="{%static 'css/stylepedidos.css' %} ">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+    <h2>Listado de Pedidos</h2>
+
+    {% if pedidos %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Vendedor</th>
+                    <th>Fecha del Pedido</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+              <div class="text-center mt-4">
+                <a href="{% url 'generar_reporte_general' %}" class="btn btn-primary">Generar Reporte General de Solicitudes</a>
+            </div>
+                {% for pedido in pedidos %}
+                    <tr>
+                        <td>{{ pedido.id }}</td>
+                        <td>{{ pedido.cliente.nombre }}</td>
+                        <td>{{ pedido.vendedor.username }}</td>
+                        <td>{{ pedido.fecha_pedido }}</td>
+                        <td>${{ pedido.total }}</td>
+                        <td>
+                            <!-- Enlace para generar el informe en PDF -->
+                            <a href="{% url 'generar_informe' pedido.id %}" class="btn btn-success">Generar Informe</a>
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay pedidos disponibles.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block custom_styles %}{% endblock %}
+
+{% block title %}Compras de Clientes{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h2 class="text-primary text-center mb-4">Compras de Todos los Clientes</h2>
+    {% for compra in compras %}
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <div>
+                    <strong>Boleta N°:</strong> {{ compra.boleta.id_boleta }}
+                </div>
+                <div>
+                    <strong>Fecha:</strong> {{ compra.boleta.fecha }}
+                </div>
+            </div>
+            <div class="card-body">
+                <p><strong>Cliente:</strong> {{ compra.usuario.username }}</p>
+                <ul class="list-group">
+                    {% for detalle in compra.detalles %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Producto:</strong> {{ detalle.id_producto.nombre }}<br>
+                                <strong>Marca:</strong> {{ detalle.id_producto.nombreMarca.nombreMarca }}<br>
+                                <strong>Cantidad:</strong> {{ detalle.cantidad }}
+                            </div>
+                            <div class="text-end">
+                                <strong>Subtotal:</strong> ${{ detalle.subtotal }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-end">
+                <strong class="text-success">Total: ${{ compra.boleta.total }}</strong>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

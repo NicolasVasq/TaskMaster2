@@ -1,0 +1,83 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+}
+
+/* Contenedor principal para la lista de clientes */
+.clientes-lista {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.clientes-lista h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.clientes-lista p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Estilos de la tabla */
+.clientes-lista table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.clientes-lista table th, .clientes-lista table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.clientes-lista table th {
+    background-color: #f4f7fc;
+    color: #333;
+    font-weight: bold;
+}
+
+.clientes-lista table td {
+    background-color: #fff;
+    color: #333;
+}
+
+.clientes-lista table td a {
+    color: #3498db;
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.clientes-lista table td a:hover {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+}
+
+/* Estilo cuando no hay clientes */
+.clientes-lista table td[colspan="5"] {
+    text-align: center;
+    font-size: 18px;
+    color: #e74c3c;
+    font-weight: bold;
+    padding: 20px 0;
+}

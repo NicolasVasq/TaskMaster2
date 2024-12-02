@@ -1,0 +1,186 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Contenedor principal del formulario */
+.crear-pedido {
+    width: 100%;
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para los campos de entrada (inputs y selects) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo general para todos los campos de texto */
+.form-control {
+    padding: 12px 18px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+input[type="date"], select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Estilo de los botones y select */
+select.form-control {
+    padding-right: 35px;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '\f107'; /* Icono de flecha de FontAwesome */
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #3498db;
+    pointer-events: none;
+}
+
+/* Estilo para el precio y total */
+#precio, #total {
+    font-weight: 600;
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para el botón de envío */
+.btn-submit {
+    background-color: #3498db;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Estilos de los iconos */
+input[type="date"] {
+    padding-right: 35px;
+}
+
+input[type="date"]::after {
+    content: '\f073'; /* Icono de calendario */
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #3498db;
+}
+
+/* Estilos de los campos de cantidad */
+#cantidad {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos generales para responsividad */
+@media (max-width: 768px) {
+    .crear-pedido {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .form-control, .btn-submit {
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+}

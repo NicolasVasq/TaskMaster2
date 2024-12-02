@@ -1,0 +1,109 @@
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        .register-container h2 {
+            text-align: center;
+            color: #4c4cff;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4c4cff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #3a3ab5;
+        }
+        .links {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .links a {
+            color: #4c4cff;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <form id="registerForm" method="post">
+            {% csrf_token %}
+            <h2>Registro de Usuario</h2>
+            {{ form|crispy }}
+            <div class="links">
+                <a href="{% url 'login' %}">¿Ya tienes una cuenta? Inicia sesión</a>
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("registerForm");
+
+            form.addEventListener("submit", function (event) {
+                const password1 = document.getElementById("id_password1");
+                const password2 = document.getElementById("id_password2");
+
+                if (password1.value !== password2.value) {
+                    event.preventDefault();
+                    alert("Las contraseñas no coinciden. Por favor, verifica.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

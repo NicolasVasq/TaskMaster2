@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Producto</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#formulario").validate({
+                rules: {
+                    nombre: "required",
+                    imagen: "required",
+                    precio: "required",
+                    nombreMarca: "required"
+                },
+                messages: {
+                    nombre: {
+                        required: 'Ingrese un nombre.'
+                    },
+                    imagen: {
+                        required: 'Ingrese una imagen.'
+                    },
+                    precio: {
+                        required: 'Ingrese un precio.'
+                    },
+                    nombreMarca: {
+                        required: 'Ingrese una marca.'
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Modificar Producto</h2>
+        <form method="POST" id="formulario" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br><br>
+            <input type="submit" class="btn btn-primary" value="Modificar">
+            <a href="{% url 'lista_productos' %}" class="btn btn-success">Volver</a> 
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <h2>Mis Compras como {{ user.username }}</h2>
+    {% for compra in compras %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <strong>Boleta N°: {{ compra.boleta.id_boleta }}</strong>
+                <span class="float-right">Fecha: {{ compra.boleta.fecha }}</span>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for detalle in compra.detalles %}
+                        <li class="list-group-item">
+                            <strong>Producto:</strong> {{ detalle.id_producto.nombre }}<br>
+                            <strong>Marca:</strong> {{ detalle.id_producto.nombreMarca.nombreMarca }}<br>
+                            <strong>Cantidad:</strong> {{ detalle.cantidad }}<br>
+                            <strong>Subtotal:</strong> ${{ detalle.subtotal }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-footer">
+                <strong>Total:</strong> ${{ compra.boleta.total }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
